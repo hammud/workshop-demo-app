@@ -21,14 +21,15 @@ pip install -r requirements.txt'''
 pytest --cov-report xml --cov-report term --cov ./lib/'''
       }
     }
-    stage('Pub test rep') {
+    stage('Publish test report') {
       steps {
         cobertura(failUnstable: true, failUnhealthy: true, failNoReports: true, lineCoverageTargets: '90,50,80', coberturaReportFile: 'coverage.xml')
       }
     }
-    stage('Approval') {
+    stage('Deploy') {
       steps {
         input(message: 'Please', id: '1')
+        sh 'sh provision.sh'
       }
     }
   }
