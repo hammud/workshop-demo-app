@@ -26,5 +26,10 @@ pytest --cov-report xml --cov-report term --cov ./lib/'''
         cobertura(failUnstable: true, failUnhealthy: true, failNoReports: true, lineCoverageTargets: '90,50,80', coberturaReportFile: 'coverage.xml')
       }
     }
+    stage('Approval') {
+      steps {
+        input(message: 'Please', id: '1')
+      }
+    }
   }
 }
