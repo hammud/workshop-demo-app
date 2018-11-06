@@ -29,7 +29,8 @@ pytest --cov-report xml --cov-report term --cov ./lib/'''
     stage('Deploy') {
       steps {
         input(message: 'Please', id: '1')
-        sh 'sh provision.sh'
+        sh '''cd deployment
+sh provision.sh'''
       }
     }
   }
