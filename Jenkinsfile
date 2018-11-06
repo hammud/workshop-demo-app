@@ -27,6 +27,9 @@ pytest --cov-report xml --cov-report term --cov ./lib/'''
       }
     }
     stage('Deploy') {
+      when {
+        branch 'master'
+      }
       steps {
         input(message: 'Please', id: '1')
         sh '''cd deployment
